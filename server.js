@@ -1,6 +1,6 @@
 const express = require("express");
 const axios = require("axios");
-const MongoClient = require("mongodb");
+const {MongoClient} = require("mongodb");
 const { timeStamp, time } = require("console");
 const uri =
   "mongodb+srv://sghauri:5262@demo-cluster.ljp3wdf.mongodb.net/?retryWrites=true&w=majority";
@@ -48,6 +48,7 @@ server.get("/words", function (req, res) {
     })
     .finally(function () {
       // always executed
+      res.header("Access-Control-Allow-Origin", "http://localhost:3000");
       res.send(data);
     });
 });
